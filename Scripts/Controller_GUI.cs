@@ -8,6 +8,7 @@ public class Controller_GUI : MonoBehaviour {
 	private int _currentMap = 0;
 	private bool _triggerReset = false;
 	private bool _triggerSearch = false;
+	private bool _triggerAll = false;
 	private string _message = "Press Search to Start the search.";
 	private GUIStyle style = new GUIStyle();
 	private GUIStyle styleMessages = new GUIStyle();
@@ -39,6 +40,7 @@ public class Controller_GUI : MonoBehaviour {
 		GUILayout.BeginArea( new Rect(0,0, (Screen.width), (Screen.height/4) ) );
 		GUILayout.BeginHorizontal ();
 		_searchMethod = GUILayout.Toolbar(_searchMethod, SEARCH_TOOLBAR);
+		_triggerAll = GUILayout.Button("All");
 		_triggerReset = GUILayout.Button("Reset");
 		_triggerSearch = GUILayout.Button("Search");
 		GUILayout.EndHorizontal ();
@@ -68,6 +70,10 @@ public class Controller_GUI : MonoBehaviour {
 				_currentMap = _mapSelection;
 				_game.SendMessage("TriggerReset");
 				_game.SendMessage("LoadMap", _mapSelection); 
+			}
+			if(_triggerAll) {
+				_game.SendMessage("TriggerReset");
+				_game.SendMessage("TriggerAll");
 			}
 		}	
 	}

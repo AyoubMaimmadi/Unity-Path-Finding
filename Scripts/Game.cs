@@ -196,6 +196,13 @@ public class Game : MonoBehaviour {
 	public void TriggerSearch(int method) {
 		Find (method);
 	}
+
+	// Trigger all searches
+	public void TriggerAll() {
+		Find (0);
+		Find (1);
+		Find (2);
+	}
 	
 	//Resets the grid to use the same map with a different search algorithm.
 	public void TriggerReset() {
